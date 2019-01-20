@@ -7,23 +7,29 @@ public class Player : MonoBehaviour {
     [SerializeField] Joystick moveStick;
     [SerializeField] Joystick shootStick;
 
-    [Tooltip ("1 equates to normal speed")]
-    [Range(0,2)] [SerializeField] float moveSpeed = 1;
-
+    // Player variables
+    [SerializeField] PlayerData playerData;
     private Rigidbody rb;
     private Animator anim;
-
     private Vector2 moveDirection;
     private Vector2 shootDirection;
 
-    // set true to use controller
+    // Player shooting variables
+    [SerializeField] WeaponData weaponData;
+    [SerializeField] GameObject projectileSpawnPoint;
+    private float projectileSpawnTimer;
+
+
+    // set true to use controller, false for virtual joysticks
     [SerializeField] private const bool TESTING = true;
 
     // Use this for initialization
     void Start () {
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
-        anim.speed = moveSpeed;
+        anim.speed = playerData.MoveSpeed();
+
+        projectileSpawnTimer = 0f;
 	}
 	
 	// Update is called once per frame
@@ -35,7 +41,59 @@ public class Player : MonoBehaviour {
         Move(deltaTime);
         Shoot(deltaTime);
         SetMoveAnimation();
-	}
+    }
+
+    private void Move(float deltaTime)
+    {
+        float speed = playerData.MoveSpeed() * deltaTime * 800f;
+
+        rb.velocity = new Vector3(moveDirection.x * speed, rb.velocity.y, moveDirection.y * speed);
+
+        // Look in direction of movement
+        SetLookDirection(moveDirection);
+    }
+
+    private bool SetLookDirection(Vector2 direction)
+    {
+        if (direction.magnitude <= 0f) return false;
+
+        Vector3 lookDirection = new Vector3(direction.x, 0f, direction.y);
+        rb.rotation = Quaternion.LookRotation(lookDirection);
+
+        return true;
+    }
+
+    private void SetMoveAnimation()
+    {
+        // Forward move animation if angle between move direction and shoot direction
+        // is less than or equal to 90 degrees, else backward move animation.
+        float move = Vector2.Dot(moveDirection, shootDirection) >= 0f ?
+            moveDirection.magnitude : -moveDirection.magnitude;
+        anim.SetFloat("Movement", move);
+    }
+
+    private void Shoot(float deltaTime)
+    {
+        // Override look direction of movement with shoot direction
+        bool isShooting = SetLookDirection(shootDirection);
+
+        if (isShooting)
+        {
+            projectileSpawnTimer += deltaTime;
+
+            if (projectileSpawnTimer >= 1f / weaponData.FireRate())
+            {
+                GameObject projectile = Instantiate(weaponData.ProjectilePrefab(),
+               projectileSpawnPoint.transform.position, rb.rotation);
+
+                projectileSpawnTimer = 0f;
+            }
+        }
+        else
+        {
+            projectileSpawnTimer = 0f;
+        }
+    }
 
     private void UpdateDirections()
     {
@@ -49,41 +107,5 @@ public class Player : MonoBehaviour {
             moveDirection = moveStick.Direction;
             shootDirection = shootStick.Direction;
         }
-    }
-
-    private void SetMoveAnimation()
-    {
-        
-        
-        // Forward move animation if angle between move direction and shoot direction
-        // is less than or equal to 90 degrees, else backward move animation.
-        float move = Vector2.Dot(moveDirection, shootDirection) >= 0f ?
-            moveDirection.magnitude : -moveDirection.magnitude;
-        anim.SetFloat("Movement", move);
-    }
-
-    private void LookDirection(Vector2 direction)
-    {
-        if (direction.magnitude <= 0f) return;
-
-        Vector3 lookDirection = new Vector3(direction.x, 0f, direction.y);
-        rb.rotation = Quaternion.LookRotation(lookDirection);
-    }
-
-    private void Move(float deltaTime)
-    {
-        float speed = moveSpeed * deltaTime * 800f;
-
-        rb.velocity = new Vector3(moveDirection.x * speed, rb.velocity.y, moveDirection.y * speed);
-
-        // Look in direction of movement
-        LookDirection(moveDirection);
-    }
-
-    private void Shoot(float deltaTime)
-    {
-        // Override look direction of movement with shoot direction
-        LookDirection(shootDirection);
-
     }
 }
