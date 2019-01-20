@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Name: SMG
   m_EditorClassIdentifier: 
   fireRate: 10
+  muzzleFlashPrefab: {fileID: 1743301284569550, guid: ad2ab49d0a2a17148bd51c93d977bdbc,
+    type: 2}
   projectilePrefab: {fileID: 1664156256388258, guid: f61f9caed9a51ab44a9ddff22dcc1a14,
     type: 2}

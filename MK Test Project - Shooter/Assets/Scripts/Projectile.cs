@@ -15,7 +15,17 @@ public class Projectile : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.gameObject.name + " | destroyed");
+        string contactMaterial = collision.gameObject.tag;
+
+        switch (contactMaterial)
+        {
+            case "Metal":
+                Debug.Log("hit metal");
+                GameObject impact = Instantiate(data.ParticleImpactPrefabMetal(),
+                    transform.position, transform.rotation);
+                break;
+        }
+
         Destroy(gameObject);
     }
 }

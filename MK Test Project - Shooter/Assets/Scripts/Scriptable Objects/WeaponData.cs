@@ -6,11 +6,17 @@ using UnityEngine;
 public class WeaponData : ScriptableObject {
 
     [Tooltip("Shots per second")] [Range (0.1f, 100f)] [SerializeField] float fireRate;
+    [SerializeField] GameObject muzzleFlashPrefab;
     [SerializeField] GameObject projectilePrefab;
 
     public float FireRate()
     {
         return fireRate;
+    }
+
+    public GameObject MuzzleFlashPrefab()
+    {
+        return muzzleFlashPrefab;
     }
 
     public GameObject ProjectilePrefab()

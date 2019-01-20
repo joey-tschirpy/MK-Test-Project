@@ -21,7 +21,7 @@ public class Player : MonoBehaviour {
 
 
     // set true to use controller, false for virtual joysticks
-    [SerializeField] private const bool TESTING = true;
+    [SerializeField] private const bool TESTING = false;
 
     // Use this for initialization
     void Start () {
@@ -83,10 +83,16 @@ public class Player : MonoBehaviour {
 
             if (projectileSpawnTimer >= 1f / weaponData.FireRate())
             {
-                GameObject projectile = Instantiate(weaponData.ProjectilePrefab(),
-               projectileSpawnPoint.transform.position, rb.rotation);
-
+                // Spawn projectile
+                Instantiate(weaponData.ProjectilePrefab(), 
+                    projectileSpawnPoint.transform.position, rb.rotation);
                 projectileSpawnTimer = 0f;
+
+                // Spawn muzzle flash particle
+                GameObject muzzleFlash = Instantiate(weaponData.MuzzleFlashPrefab(),
+                    projectileSpawnPoint.transform.position, rb.rotation);
+                muzzleFlash.transform.SetParent(projectileSpawnPoint.transform);
+
             }
         }
         else
