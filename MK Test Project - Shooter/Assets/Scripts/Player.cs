@@ -91,7 +91,8 @@ public class Player : MonoBehaviour {
             if (projectileSpawnTimer >= 1f / weaponData.FireRate())
             {
                 // Spawn projectile
-                Instantiate(weaponData.ProjectilePrefab(), 
+
+                ProjectilePooler.Instance.SpawnProjectile(weaponData.ProjectileTag(),
                     projectileSpawnPoint.transform.position, rb.rotation);
                 projectileSpawnTimer = 0f;
 

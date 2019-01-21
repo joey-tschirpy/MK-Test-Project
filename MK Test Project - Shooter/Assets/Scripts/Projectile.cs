@@ -5,14 +5,6 @@ using UnityEngine;
 public class Projectile : MonoBehaviour {
     [SerializeField] public ProjectileData data;
 
-    void Start()
-    {
-        Destroy(gameObject, 1f);
-
-        Rigidbody rb = GetComponent<Rigidbody>();
-        rb.AddForce(rb.transform.forward * data.Speed());
-    }
-
     private void OnCollisionEnter(Collision collision)
     {
         // Create impact
@@ -29,18 +21,19 @@ public class Projectile : MonoBehaviour {
                 break;
         }
 
-        // Damage object if able to
+        // Check if player hit
         var player = collision.gameObject.GetComponent<Player>();
         if (player == null)
         {
-            Debug.Log("player not hit");
+            // Check if enemy hit
         }
         else
         {
             player.TakeDamage(data.Damage());
         }
-        
 
-        Destroy(gameObject);
+        // Reset bullet movement and set inactive ready to use again
+        GetComponent<Rigidbody>().velocity = Vector3.zero;
+        gameObject.SetActive(false);
     }
 }

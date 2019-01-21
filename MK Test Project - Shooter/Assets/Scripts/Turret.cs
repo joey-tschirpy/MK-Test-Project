@@ -30,7 +30,7 @@ public class Turret : MonoBehaviour {
             if (projectileSpawnTimer >= 1f / weaponData.FireRate())
             {
                 // Spawn projectile
-                Instantiate(weaponData.ProjectilePrefab(),
+                ProjectilePooler.Instance.SpawnProjectile(weaponData.ProjectileTag(),
                     projectileSpawnPoint.transform.position, transform.rotation);
                 projectileSpawnTimer = 0f;
 

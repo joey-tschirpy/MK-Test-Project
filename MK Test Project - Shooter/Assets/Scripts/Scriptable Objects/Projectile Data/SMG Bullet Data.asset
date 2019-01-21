@@ -14,6 +14,6 @@ MonoBehaviour:
   damage: 2
   particleImpactPrefabFlesh: {fileID: 1753807293891918, guid: fd8c82225014ad24b9ca5c3277568194,
     type: 2}
-  particleImpactPrefabMetal: {fileID: 1153796560822094, guid: 42b2987bdfc9f2d4684806caafa25476,
+  particleImpactPrefabMetal: {fileID: 1581508296300280, guid: 42b2987bdfc9f2d4684806caafa25476,
     type: 2}
   speed: 5000

@@ -61,10 +61,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Camera.cs" />
+    <Compile Include="Assets\Scripts\CameraFollow.cs" />
+    <Compile Include="Assets\Scripts\EnemyHealthBar.cs" />
     <Compile Include="Assets\Scripts\HUD.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\Projectile.cs" />
+    <Compile Include="Assets\Scripts\ProjectilePooler.cs" />
     <Compile Include="Assets\Scripts\Scriptable Objects\PlayerData.cs" />
     <Compile Include="Assets\Scripts\Scriptable Objects\ProjectileData.cs" />
     <Compile Include="Assets\Scripts\Scriptable Objects\WeaponData.cs" />
