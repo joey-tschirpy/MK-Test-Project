@@ -25,6 +25,8 @@ public class Player : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        playerData.init();
+
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
         anim.speed = playerData.MoveSpeed();
@@ -41,6 +43,11 @@ public class Player : MonoBehaviour {
         Move(deltaTime);
         Shoot(deltaTime);
         SetMoveAnimation();
+    }
+
+    public void ChangeWeapon(WeaponData weapon)
+    {
+        weaponData = weapon;
     }
 
     private void Move(float deltaTime)
@@ -99,6 +106,11 @@ public class Player : MonoBehaviour {
         {
             projectileSpawnTimer = 0f;
         }
+    }
+
+    public void TakeDamage(float damage)
+    {
+        playerData.TakeDamage(damage);
     }
 
     private void UpdateDirections()

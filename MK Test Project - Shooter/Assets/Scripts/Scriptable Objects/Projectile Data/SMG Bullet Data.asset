@@ -11,7 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83cb68a6ced41db47a43563f7cdce29e, type: 3}
   m_Name: SMG Bullet Data
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 2
+  particleImpactPrefabFlesh: {fileID: 1753807293891918, guid: fd8c82225014ad24b9ca5c3277568194,
+    type: 2}
   particleImpactPrefabMetal: {fileID: 1153796560822094, guid: 42b2987bdfc9f2d4684806caafa25476,
     type: 2}
-  speed: 10000
+  speed: 5000
