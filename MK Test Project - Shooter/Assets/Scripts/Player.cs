@@ -8,7 +8,7 @@ public class Player : MonoBehaviour {
     [SerializeField] Joystick shootStick;
 
     // Player variables
-    [SerializeField] PlayerData playerData;
+    [SerializeField] MovementData moveData;
     private Rigidbody rb;
     private Animator anim;
     private Vector2 moveDirection;
@@ -21,15 +21,13 @@ public class Player : MonoBehaviour {
 
 
     // set true to use controller, false for virtual joysticks
-    [SerializeField] private const bool TESTING = false;
+    [SerializeField] private bool TESTING = false;
 
     // Use this for initialization
     void Start () {
-        playerData.init();
-
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
-        anim.speed = playerData.MoveSpeed();
+        anim.speed = moveData.MoveSpeed();
 
         projectileSpawnTimer = 0f;
 	}
@@ -52,7 +50,7 @@ public class Player : MonoBehaviour {
 
     private void Move(float deltaTime)
     {
-        float speed = playerData.MoveSpeed() * deltaTime * 800f;
+        float speed = moveData.MoveSpeed() * deltaTime * 800f;
 
         rb.velocity = new Vector3(moveDirection.x * speed, rb.velocity.y, moveDirection.y * speed);
 
@@ -107,11 +105,6 @@ public class Player : MonoBehaviour {
         {
             projectileSpawnTimer = 0f;
         }
-    }
-
-    public void TakeDamage(float damage)
-    {
-        playerData.TakeDamage(damage);
     }
 
     private void UpdateDirections()

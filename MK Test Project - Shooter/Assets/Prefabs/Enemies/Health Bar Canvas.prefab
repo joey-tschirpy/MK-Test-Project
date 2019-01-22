@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 114102110291267026}
   - component: {fileID: 114336924076034336}
   - component: {fileID: 114249063022304804}
+  - component: {fileID: 114465576931481608}
   m_Layer: 0
   m_Name: Health Bar Canvas
   m_TagString: Untagged
@@ -97,8 +98,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 0}
-  zOffsetMin: 0
-  zOffsetMax: 1.25
 --- !u!114 &114336924076034336
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -115,6 +114,19 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 0
+--- !u!114 &114465576931481608
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1745184930484888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc34b8aa1de97014bad6b2cddecde3b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  killableObject: {fileID: 0}
+  healthBar: {fileID: 114667458972086842}
 --- !u!114 &114667458972086842
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -139,7 +151,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.62
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
 --- !u!114 &114990169491606052

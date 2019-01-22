@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class EnemyHealthBar : MonoBehaviour {
 
-    [SerializeField] private Camera cam;
+    private Camera cam;
 
     // Use this for initialization
     void Start()
     {
-        transform.rotation = cam.transform.rotation;
+        cam = Camera.main;
     }
 
     // Update is called once per frame
     void Update ()
     {
-
-	}
+        transform.rotation = cam.transform.rotation;
+    }
 }

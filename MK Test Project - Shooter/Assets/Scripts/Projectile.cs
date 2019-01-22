@@ -21,15 +21,11 @@ public class Projectile : MonoBehaviour {
                 break;
         }
 
-        // Check if player hit
-        var player = collision.gameObject.GetComponent<Player>();
-        if (player == null)
+        // Check if object is killable to take damage, killable layer is 9
+        if (collision.gameObject.layer == 9)
         {
-            // Check if enemy hit
-        }
-        else
-        {
-            player.TakeDamage(data.Damage());
+            Status status = collision.gameObject.GetComponent<Status>();
+            status.TakeDamage(data.Damage());
         }
 
         // Reset bullet movement and set inactive ready to use again

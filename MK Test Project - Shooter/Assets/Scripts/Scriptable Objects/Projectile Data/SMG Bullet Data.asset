@@ -16,4 +16,4 @@ MonoBehaviour:
     type: 2}
   particleImpactPrefabMetal: {fileID: 1581508296300280, guid: 42b2987bdfc9f2d4684806caafa25476,
     type: 2}
-  speed: 5000
+  speed: 500
