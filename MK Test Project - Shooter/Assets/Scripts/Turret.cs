@@ -8,6 +8,8 @@ public class Turret : MonoBehaviour {
     private float projectileSpawnTimer;
     private bool isShooting;
 
+    [SerializeField] GameObject turretHead;
+
     // Use this for initialization
     void Start () {
         projectileSpawnTimer = 0f;

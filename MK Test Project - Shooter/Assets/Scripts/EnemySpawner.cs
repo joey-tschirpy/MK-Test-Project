@@ -5,19 +5,19 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour {
     // Enemy prefabs
     [SerializeField] GameObject riflemanPrefab;
+    [SerializeField] GameObject turretPrefab;
 
+    // Game variables
     [SerializeField] List<Transform> spawnPoints;
+    [SerializeField] GameObject enemyObjective;
 
-    // Enemy objective variables
-    [SerializeField] GameObject objective;
+    private int enemyCount;
 
 	// Use this for initialization
 	void Start () {
-        for (int i = 0; i < spawnPoints.Count; i++)
+        for (int i = 0; i < spawnPoints.Count * 2; i++)
         {
-            GameObject enemy = Instantiate(riflemanPrefab);
-            enemy.transform.position = spawnPoints[i].position;
-            enemy.GetComponent<Enemy>().SetObjective(objective);
+            SpawnRifleman(i % spawnPoints.Count);
         }
 	}
 	
@@ -25,4 +25,35 @@ public class EnemySpawner : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    public void enemyDestroyed()
+    {
+        enemyCount--;
+
+
+    }
+
+    private void SpawnRifleman(int spawnIndex)
+    {
+        GameObject enemy = Instantiate(riflemanPrefab);
+        enemy.transform.position = spawnPoints[spawnIndex].position;
+        enemy.GetComponent<Soldier>().SetObjective(enemyObjective);
+    }
+
+    //private void SpawnTurret(int spawnIndex)
+    //{
+    //    GameObject turret = Instantiate(riflemanPrefab);
+    //    turret.transform.position = spawnPoints[spawnIndex].position;
+    //    turret.GetComponent<Turret>().SetObjective(enemyObjective);
+    //}
+
+    public void Wave1()
+    {
+        int riflemanCount = 12;
+
+        for (int i = 0; i < riflemanCount; i++)
+        {
+            SpawnRifleman(i);
+        }
+    }
 }

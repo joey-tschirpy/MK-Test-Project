@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83cb68a6ced41db47a43563f7cdce29e, type: 3}
+  m_Name: Turret Bullet Data
+  m_EditorClassIdentifier: 
+  damage: 200
+  particleImpactPrefabFlesh: {fileID: 1753807293891918, guid: 3c6fd8f1faaa6f649a44a764fd6e1ea3,
+    type: 2}
+  particleImpactPrefabMetal: {fileID: 1581508296300280, guid: 3a33314558707154eb0b8fc284ab8e1b,
+    type: 2}
+  speed: 200

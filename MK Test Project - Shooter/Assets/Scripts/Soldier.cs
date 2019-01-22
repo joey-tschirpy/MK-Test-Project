@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy : MonoBehaviour {
+public class Soldier : MonoBehaviour {
     // Enemy variables
     [SerializeField] MovementData moveData;
     private Animator anim;
-    private static int enemyCount;
 
     // Shooting variables
     [SerializeField] WeaponData weaponData;
@@ -26,8 +25,6 @@ public class Enemy : MonoBehaviour {
         anim.speed = moveData.MoveSpeed();
 
         projectileSpawnTimer = 0f;
-
-        enemyCount++;
     }
 	
 	// Update is called once per frame
