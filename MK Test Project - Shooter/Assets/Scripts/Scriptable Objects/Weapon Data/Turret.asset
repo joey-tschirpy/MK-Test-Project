@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13041d644bde23646952208d93721225, type: 3}
   m_Name: Turret
   m_EditorClassIdentifier: 
-  fireRate: 2
-  muzzleFlashPrefab: {fileID: 1743301284569550, guid: ad2ab49d0a2a17148bd51c93d977bdbc,
+  fireRate: 0.5
+  muzzleFlashPrefab: {fileID: 1743301284569550, guid: b5adec3f890aef04c8573e1359ef3151,
     type: 2}
   projectileTag: Turret Bullet

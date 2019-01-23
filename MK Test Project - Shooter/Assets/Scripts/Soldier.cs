@@ -78,8 +78,8 @@ public class Soldier : MonoBehaviour {
 
         projectileSpawnTimer += deltaTime;
 
-        // Only shoot if aiming at player (ignore projectile layer, 10)
-        int layerMask = ~(1 << 10);
+        // Only shoot if aiming at player (ignore projectile layer, 9)
+        int layerMask = ~(1 << 9);
         RaycastHit hit;
         if (Physics.Raycast(projectileSpawnPoint.transform.position, projectileSpawnPoint.transform.forward, out hit, Mathf.Infinity, layerMask))
         {

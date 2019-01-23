@@ -26,8 +26,8 @@ public class ProjectilePooler : MonoBehaviour {
         }
     }
 
-    public List<Pool> pools;
-    public Dictionary<string, Queue<GameObject>> poolDict;
+    [SerializeField] private List<Pool> pools;
+    private Dictionary<string, Queue<GameObject>> poolDict;
 
     public static ProjectilePooler Instance;
 

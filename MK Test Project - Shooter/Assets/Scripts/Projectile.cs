@@ -21,8 +21,8 @@ public class Projectile : MonoBehaviour {
                 break;
         }
 
-        // Check if object is killable to take damage, killable layer is 9
-        if (collision.gameObject.layer == 9)
+        // Check if object can take damage, Player or Enemy layer (10 or 11)
+        if (collision.gameObject.layer == 10 || collision.gameObject.layer == 11)
         {
             Status status = collision.gameObject.GetComponent<Status>();
             status.TakeDamage(data.Damage());
