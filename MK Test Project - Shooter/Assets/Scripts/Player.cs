@@ -15,7 +15,11 @@ public class Player : MonoBehaviour {
     private Vector2 shootDirection;
 
     // Player shooting variables
-    [SerializeField] WeaponData weaponData;
+    [SerializeField] WeaponData weapon;
+    WeaponData previousWeapon;
+    bool newWeapon;
+    float weaponTimer;
+    float weaponTime;
     [SerializeField] GameObject projectileSpawnPoint;
     private float projectileSpawnTimer;
 
@@ -30,6 +34,9 @@ public class Player : MonoBehaviour {
         anim.speed = moveData.MoveSpeed();
 
         projectileSpawnTimer = 0f;
+
+        previousWeapon = weapon;
+        newWeapon = false;
 	}
 	
 	// Update is called once per frame
@@ -37,15 +44,20 @@ public class Player : MonoBehaviour {
         float deltaTime = Time.deltaTime;
         UpdateDirections();
 
+        UpdateWeapon(deltaTime);
+
         // Shoot will override look direction from move
         Move(deltaTime);
         Shoot(deltaTime);
         SetMoveAnimation();
     }
 
-    public void ChangeWeapon(WeaponData weapon)
+    public void NewWeapon(WeaponData weapon, float weaponTime)
     {
-        weaponData = weapon;
+        this.weapon = weapon;
+        weaponTimer = 0f;
+        this.weaponTime = weaponTime;
+        newWeapon = true;
     }
 
     private void Move(float deltaTime)
@@ -86,16 +98,16 @@ public class Player : MonoBehaviour {
         {
             projectileSpawnTimer += deltaTime;
 
-            if (projectileSpawnTimer >= 1f / weaponData.FireRate())
+            if (projectileSpawnTimer >= 1f / weapon.FireRate())
             {
                 // Spawn projectile
 
-                ProjectilePooler.Instance.SpawnProjectile(weaponData.ProjectileTag(),
+                ProjectilePooler.Instance.SpawnProjectile(weapon.ProjectileTag(),
                     projectileSpawnPoint.transform.position, rb.rotation);
                 projectileSpawnTimer = 0f;
 
                 // Spawn muzzle flash particle
-                GameObject muzzleFlash = Instantiate(weaponData.MuzzleFlashPrefab(),
+                GameObject muzzleFlash = Instantiate(weapon.MuzzleFlashPrefab(),
                     projectileSpawnPoint.transform.position, rb.rotation);
                 muzzleFlash.transform.SetParent(projectileSpawnPoint.transform);
 
@@ -118,6 +130,22 @@ public class Player : MonoBehaviour {
         {
             moveDirection = moveStick.Direction;
             shootDirection = shootStick.Direction;
+        }
+    }
+
+    private void UpdateWeapon(float deltaTime)
+    {
+        if (newWeapon)
+        {
+            if (weaponTimer < weaponTime)
+            {
+                weaponTimer += deltaTime;
+            }
+            else
+            {
+                weapon = previousWeapon;
+                newWeapon = false;
+            }
         }
     }
 }

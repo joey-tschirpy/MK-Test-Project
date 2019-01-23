@@ -37,13 +37,19 @@ public class Status : MonoBehaviour {
         {
             switch(type)
             {
-                case Type.Player:
-                    Debug.Log("you lose");
-                    break;
                 case Type.Enemy:
                     Destroy(gameObject);
                     break;
             }
+        }
+    }
+
+    public void AddHealth(float health)
+    {
+        this.health += health;
+        if (health > data.HealthMax())
+        {
+            health = data.HealthMax();
         }
     }
 }

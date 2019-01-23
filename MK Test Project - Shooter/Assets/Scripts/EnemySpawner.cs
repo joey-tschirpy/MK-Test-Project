@@ -37,7 +37,6 @@ public class EnemySpawner : MonoBehaviour {
     private float nextWaveTimer;
     private const float START_WAVE_TIME = 3f;
     private bool waveStart;
-    private bool end;
 
     // UI variables
     [SerializeField] TextMeshProUGUI waveText;
@@ -48,7 +47,6 @@ public class EnemySpawner : MonoBehaviour {
     void Start () {
         currentWave = 0;
         waveStart = true;
-        end = false;
         nextWaveTimer = 0f;
         waveStartText.text = "";
 	}

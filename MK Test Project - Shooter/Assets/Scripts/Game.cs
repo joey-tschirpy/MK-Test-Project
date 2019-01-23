@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Game : MonoBehaviour {
     [SerializeField] Status playerStatus;
     [SerializeField] EnemySpawner enemySpawner;
 
-    [SerializeField] GameObject winPanel;
+    [SerializeField] GameObject outcomePanel;
+    [SerializeField] TextMeshProUGUI outcomeText; 
 	
 	// Update is called once per frame
 	void Update () {
@@ -23,11 +25,14 @@ public class Game : MonoBehaviour {
 
     public void Win()
     {
-        winPanel.SetActive(true);
+        outcomePanel.SetActive(true);
+        outcomeText.text = "Victory";
     }
 
     public void Lose()
     {
-        Debug.Log("you lose");
+        outcomeText.text = "Defeat";
+        outcomePanel.SetActive(true);
+        playerStatus.gameObject.SetActive(false);
     }
 }
