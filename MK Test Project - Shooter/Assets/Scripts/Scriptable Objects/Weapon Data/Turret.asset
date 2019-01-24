@@ -15,3 +15,4 @@ MonoBehaviour:
   muzzleFlashPrefab: {fileID: 1743301284569550, guid: b5adec3f890aef04c8573e1359ef3151,
     type: 2}
   projectileTag: Turret Bullet
+  shootSound: {fileID: 8300000, guid: 32e10dd8d834f8940802dbbfc134da32, type: 3}

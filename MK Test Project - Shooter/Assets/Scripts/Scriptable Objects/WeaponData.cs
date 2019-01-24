@@ -8,6 +8,7 @@ public class WeaponData : ScriptableObject {
     [Tooltip("Shots per second")] [Range (0.1f, 100f)] [SerializeField] float fireRate;
     [SerializeField] GameObject muzzleFlashPrefab;
     [SerializeField] string projectileTag;
+    [SerializeField] GameObject shootSoundPrefab;
 
     public float FireRate()
     {
@@ -22,5 +23,10 @@ public class WeaponData : ScriptableObject {
     public string ProjectileTag()
     {
         return projectileTag;
+    }
+
+    public GameObject ShootSoundPrefab()
+    {
+        return shootSoundPrefab;
     }
 }

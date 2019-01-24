@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Collectible : MonoBehaviour {
     [SerializeField] CollectibleData data;
+    [SerializeField] AudioSource pickupSound;
     [SerializeField] Image TimerImage;
     [SerializeField] float rotationSpeed = 90f;
     float spawnTime;
@@ -75,6 +76,8 @@ public class Collectible : MonoBehaviour {
                     status.AddHealth(data.Value());
                     break;
             }
+
+            pickupSound.Play();
 
             Collected();
         }

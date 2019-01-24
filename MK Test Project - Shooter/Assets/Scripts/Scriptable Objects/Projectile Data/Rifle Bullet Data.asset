@@ -17,3 +17,5 @@ MonoBehaviour:
   particleImpactPrefabMetal: {fileID: 1581508296300280, guid: 42b2987bdfc9f2d4684806caafa25476,
     type: 2}
   speed: 400
+  shootAudioPrefab: {fileID: 1359472681098852, guid: 8a861ffad6d1626499e30d3fc5650fad,
+    type: 2}

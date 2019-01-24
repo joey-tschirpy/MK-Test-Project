@@ -9,7 +9,7 @@ public class Soldier : MonoBehaviour {
     private Animator anim;
 
     // Shooting variables
-    [SerializeField] WeaponData weaponData;
+    [SerializeField] WeaponData weapon;
     [SerializeField] GameObject projectileSpawnPoint;
     private float projectileSpawnTimer;
 
@@ -83,15 +83,15 @@ public class Soldier : MonoBehaviour {
         RaycastHit hit;
         if (Physics.Raycast(projectileSpawnPoint.transform.position, projectileSpawnPoint.transform.forward, out hit, Mathf.Infinity, layerMask))
         {
-            if (hit.transform.name == "Player" && projectileSpawnTimer >= 1f / weaponData.FireRate())
+            if (hit.transform.name == "Player" && projectileSpawnTimer >= 1f / weapon.FireRate())
             {
                 // Spawn projectile
-                ProjectilePooler.Instance.SpawnProjectile(weaponData.ProjectileTag(),
+                ProjectilePooler.Instance.SpawnProjectile(weapon.ProjectileTag(),
                     projectileSpawnPoint.transform.position, navMeshAgent.transform.rotation);
                 projectileSpawnTimer = 0f;
 
                 // Spawn muzzle flash particle
-                GameObject muzzleFlash = Instantiate(weaponData.MuzzleFlashPrefab(),
+                GameObject muzzleFlash = Instantiate(weapon.MuzzleFlashPrefab(),
                     projectileSpawnPoint.transform.position, navMeshAgent.transform.rotation);
                 muzzleFlash.transform.SetParent(projectileSpawnPoint.transform);
             }

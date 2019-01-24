@@ -466,7 +466,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 583749515119eb145a39b4e27214a6d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponData: {fileID: 11400000, guid: d4778b918dde78944a6176937b68ebef, type: 2}
+  weapon: {fileID: 11400000, guid: d4778b918dde78944a6176937b68ebef, type: 2}
   projectileSpawnPoint: {fileID: 1233536881885630}
   turretHead: {fileID: 1848218644495884}
   rotateSpeed: 180

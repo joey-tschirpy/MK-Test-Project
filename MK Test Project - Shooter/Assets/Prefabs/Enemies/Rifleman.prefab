@@ -1087,7 +1087,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveData: {fileID: 11400000, guid: 6d9f230caa72f964a921b1b02e43f4a8, type: 2}
-  weaponData: {fileID: 11400000, guid: ee5ce128d871ae4489a3d17fcd220625, type: 2}
+  weapon: {fileID: 11400000, guid: ee5ce128d871ae4489a3d17fcd220625, type: 2}
   projectileSpawnPoint: {fileID: 1883167727261720}
   navMeshAgent: {fileID: 195906771784848808}
   objective: {fileID: 0}

@@ -101,7 +101,6 @@ public class Player : MonoBehaviour {
             if (projectileSpawnTimer >= 1f / weapon.FireRate())
             {
                 // Spawn projectile
-
                 ProjectilePooler.Instance.SpawnProjectile(weapon.ProjectileTag(),
                     projectileSpawnPoint.transform.position, rb.rotation);
                 projectileSpawnTimer = 0f;
@@ -110,7 +109,6 @@ public class Player : MonoBehaviour {
                 GameObject muzzleFlash = Instantiate(weapon.MuzzleFlashPrefab(),
                     projectileSpawnPoint.transform.position, rb.rotation);
                 muzzleFlash.transform.SetParent(projectileSpawnPoint.transform);
-
             }
         }
         else

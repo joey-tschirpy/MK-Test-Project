@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class CollectibleWeapon : MonoBehaviour {
     [SerializeField] CollectibleWeaponData data;
+    [SerializeField] AudioSource pickupSound;
     [SerializeField] Image TimerImage;
     [SerializeField] float rotationSpeed = 90f;
     float spawnTime;
@@ -76,6 +77,8 @@ public class CollectibleWeapon : MonoBehaviour {
         {
             Player player = other.gameObject.GetComponent<Player>();
             player.NewWeapon(data.Weapon(), data.Timer());
+
+            pickupSound.Play();
 
             Collected();
         }

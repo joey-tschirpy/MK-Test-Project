@@ -80,6 +80,7 @@
     <Compile Include="Assets\Scripts\Scriptable Objects\WeaponData.cs" />
     <Compile Include="Assets\Scripts\Soldier.cs" />
     <Compile Include="Assets\Scripts\Status.cs" />
+    <Compile Include="Assets\Scripts\TEST_KILLALL.cs" />
     <Compile Include="Assets\Scripts\Turret.cs" />
     <Compile Include="Assets\Virtual Joystick Pack\Scripts\Base\Joystick.cs" />
     <Compile Include="Assets\Virtual Joystick Pack\Scripts\Joysticks\FixedJoystick.cs" />

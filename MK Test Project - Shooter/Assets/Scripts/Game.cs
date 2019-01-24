@@ -8,18 +8,36 @@ public class Game : MonoBehaviour {
     [SerializeField] EnemySpawner enemySpawner;
 
     [SerializeField] GameObject outcomePanel;
-    [SerializeField] TextMeshProUGUI outcomeText; 
-	
-	// Update is called once per frame
-	void Update () {
+    [SerializeField] TextMeshProUGUI outcomeText;
+
+    // Audio
+    [SerializeField] AudioSource backgroundMusic;
+    [SerializeField] AudioSource victoryMusic;
+    [SerializeField] AudioSource defeatMusic;
+
+    bool gameOver;
+
+    void Start()
+    {
+        gameOver = false;
+    }
+
+    // Update is called once per frame
+    void Update () {
+        if (gameOver)
+        {
+            return;
+        }
+
         if (playerStatus.Health() <= 0f)
         {
             Lose();
+            gameOver = true;
         }
-
-        if (enemySpawner.Victory())
+        else if (enemySpawner.Victory())
         {
             Win();
+            gameOver = true;
         }
 	}
 
@@ -27,6 +45,12 @@ public class Game : MonoBehaviour {
     {
         outcomePanel.SetActive(true);
         outcomeText.text = "Victory";
+
+        if (!victoryMusic.isPlaying)
+        {
+            backgroundMusic.Stop();
+            victoryMusic.Play();
+        }
     }
 
     public void Lose()
@@ -34,5 +58,11 @@ public class Game : MonoBehaviour {
         outcomeText.text = "Defeat";
         outcomePanel.SetActive(true);
         playerStatus.gameObject.SetActive(false);
+
+        if (!defeatMusic.isPlaying)
+        {
+            backgroundMusic.Stop();
+            defeatMusic.Play();
+        }
     }
 }
