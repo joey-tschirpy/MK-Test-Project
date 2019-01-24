@@ -4,6 +4,28 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour {
+    int currentScene;
+
+    void Start()
+    {
+        currentScene = SceneManager.GetActiveScene().buildIndex;
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (currentScene == 0)
+            {
+                QuitGame();
+            }
+            else
+            {
+                LoadMenuScene();
+            }
+        }
+    }
+
     public void LoadMenuScene()
     {
         SceneManager.LoadScene(0);
@@ -11,7 +33,11 @@ public class SceneLoader : MonoBehaviour {
 
     public void LoadNextScene()
     {
-        int currentScene = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(currentScene + 1);
+        SceneManager.LoadScene(++currentScene);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }

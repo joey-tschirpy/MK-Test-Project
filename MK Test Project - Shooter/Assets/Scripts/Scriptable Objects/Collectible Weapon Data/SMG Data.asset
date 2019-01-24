@@ -11,6 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b85d8a0135b7e094a9c0cd5162ae84a0, type: 3}
   m_Name: SMG Data
   m_EditorClassIdentifier: 
-  respawnTime: 2
+  respawnTime: 30
   timer: 15
   weapon: {fileID: 11400000, guid: 2dca7978ccbfbc04ab8550acd2c6c97a, type: 2}
